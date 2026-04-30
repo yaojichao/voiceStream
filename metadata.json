@@ -1,0 +1,12 @@
+{
+  "name": "VocalStream",
+  "description": "Professional voice-to-text verification and audio analysis tool.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "Speech Recognition",
+    "Audio Visualization",
+    "Real-time Processing"
+  ]
+}
