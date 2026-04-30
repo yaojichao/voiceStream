@@ -70,7 +70,7 @@ export default function App() {
   // Initialize Speech Recognition
   useEffect(() => {
     if (!SpeechRecognition) {
-      setError('Your browser does not support Speech Recognition. Please use Chrome or Safari.');
+      setError('您的浏览器不支持语音识别。请使用 Chrome 或 Safari。');
       return;
     }
 
@@ -103,9 +103,9 @@ export default function App() {
     recognition.onerror = (event: any) => {
       console.error('Recognition error:', event.error);
       if (event.error === 'not-allowed') {
-        setError('Microphone access denied. Please enable it in browser settings.');
+        setError('麦克风访问被拒绝。请在浏览器设置中启用。');
       } else {
-        setError(`Error: ${event.error}`);
+        setError(`错误: ${event.error}`);
       }
       setIsRecording(false);
     };
@@ -227,17 +227,17 @@ export default function App() {
                 <Volume2 className="w-4 h-4 text-[#8E9299]" />
               </div>
               <div className="hidden sm:block">
-                <h1 className="text-xs font-mono font-bold text-white tracking-[0.2em] uppercase">Vocal_Processor_X1</h1>
-                <p className="text-[9px] font-mono text-[#8E9299] uppercase tracking-widest opacity-50">STT Accuracy Validator // Unit-04</p>
+                <h1 className="text-xs font-mono font-bold text-white tracking-[0.2em] uppercase">语音处理器 X1</h1>
+                <p className="text-[9px] font-mono text-[#8E9299] uppercase tracking-widest opacity-50">语音转文本准确度验证器 // 单元-04</p>
               </div>
             </div>
           </div>
 
           <div className="flex bg-black/40 p-1 rounded-full border border-white/5">
             {[
-              { id: 'live', label: 'MONITOR' },
-              { id: 'verify', label: 'VERIFY' },
-              { id: 'history', label: 'LOGS' }
+              { id: 'live', label: '实时监控' },
+              { id: 'verify', label: '准确度验证' },
+              { id: 'history', label: '捕获日志' }
             ].map((mode) => (
               <button
                 key={mode.id}
@@ -272,10 +272,10 @@ export default function App() {
             <div className="relative z-10 flex-1 flex flex-col">
               <div className="flex items-center justify-between mb-8 opacity-40">
                 <div className="flex gap-2">
-                  <span className="text-[10px] font-mono text-[#8E9299]">CH.1: INPUT_SRC</span>
-                  <span className="text-[10px] font-mono text-white">LOCKED</span>
+                  <span className="text-[10px] font-mono text-[#8E9299]">通道.1: 输入源</span>
+                  <span className="text-[10px] font-mono text-white">锁定</span>
                 </div>
-                <div className="text-[10px] font-mono text-[#8E9299]">REF_0x299A</div>
+                <div className="text-[10px] font-mono text-[#8E9299]">参考_0x299A</div>
               </div>
 
               <div className="flex-1 flex flex-col justify-center max-w-3xl mx-auto w-full">
@@ -292,7 +292,7 @@ export default function App() {
                         ) : (
                           <div className="opacity-20 flex flex-col items-center gap-4 py-20">
                             <Mic className="w-16 h-16" />
-                            <p className="text-sm tracking-[0.4em] uppercase text-center">Awaiting Audio Input Signal</p>
+                            <p className="text-sm tracking-[0.4em] uppercase text-center">等待音频输入信号</p>
                           </div>
                         )}
                       </AnimatePresence>
@@ -303,11 +303,11 @@ export default function App() {
                 {viewMode === 'verify' && (
                   <div className="space-y-8">
                     <div className="bg-white/[0.03] rounded-2xl border border-white/5 p-6 backdrop-blur-sm">
-                      <label className="block text-[10px] font-mono text-[#8E9299] uppercase tracking-widest mb-4">Target Script</label>
+                      <label className="block text-[10px] font-mono text-[#8E9299] uppercase tracking-widest mb-4">目标文本</label>
                       <textarea
                         value={targetText}
                         onChange={(e) => setTargetText(e.target.value)}
-                        placeholder="Define sequence to match..."
+                        placeholder="在此输入要验证的文本序列..."
                         className="w-full h-32 bg-transparent text-xl font-mono text-[#8E9299] focus:text-white transition-colors resize-none focus:outline-none"
                       />
                     </div>
@@ -318,7 +318,7 @@ export default function App() {
                           <span className="text-[#FF4444]">{interimTranscript}</span>
                         </>
                       ) : (
-                        <p className="text-sm text-[#8E9299] uppercase tracking-[0.2em]">Capture will stream here...</p>
+                        <p className="text-sm text-[#8E9299] uppercase tracking-[0.2em]">捕获内容将在此实时流显示...</p>
                       )}
                     </div>
                   </div>
@@ -330,14 +330,14 @@ export default function App() {
                       history.map((item) => (
                         <div key={item.id} className="p-6 bg-white/[0.02] border border-white/5 rounded-2xl group hover:bg-white/[0.05] transition-all">
                           <div className="flex justify-between items-center mb-4">
-                            <span className="text-[9px] font-mono text-[#8E9299] opacity-50 uppercase">CAPTURE ID: {item.id.slice(0, 8)}</span>
+                            <span className="text-[9px] font-mono text-[#8E9299] opacity-50 uppercase">捕获 ID: {item.id.slice(0, 8)}</span>
                             <span className="text-[9px] font-mono text-[#8E9299]">{new Date(item.timestamp).toLocaleString()}</span>
                           </div>
                           <p className="text-xl font-mono text-[#8E9299] group-hover:text-white transition-colors">"{item.text}"</p>
                         </div>
                       ))
                     ) : (
-                      <div className="py-20 text-center opacity-20 uppercase tracking-widest text-sm font-mono">Archive Empty</div>
+                      <div className="py-20 text-center opacity-20 uppercase tracking-widest text-sm font-mono">存档为空</div>
                     )}
                   </div>
                 )}
@@ -346,10 +346,10 @@ export default function App() {
 
             {/* Corner Labels (Physics Console Aesthetics) */}
             <div className="absolute bottom-6 left-6 text-[8px] font-mono text-[#8E9299] opacity-30 select-none">
-              TERMINAL_PROC_V4_SEC_A
+              终端进程_V4_分区_A
             </div>
             <div className="absolute bottom-6 right-6 text-[8px] font-mono text-[#8E9299] opacity-30 select-none">
-              ISO_9001_COMPLIANT
+              符合_ISO_9001_标准
             </div>
           </section>
 
@@ -358,7 +358,7 @@ export default function App() {
             {/* Master Record Trigger */}
             <div className="space-y-4">
               <div className="flex items-center justify-between px-2">
-                <span className="text-[10px] font-mono text-[#8E9299] uppercase tracking-widest">Master Trigger</span>
+                <span className="text-[10px] font-mono text-[#8E9299] uppercase tracking-widest">主控制器</span>
                 <div className={`w-2 h-2 rounded-full ${isRecording ? 'bg-[#FF4444] shadow-[0_0_8px_#FF4444]' : 'bg-white/10'}`} />
               </div>
               
@@ -380,14 +380,14 @@ export default function App() {
               
               <div className="text-center font-mono py-2">
                 <p className={`text-xs uppercase tracking-widest font-bold ${isRecording ? 'text-[#FF4444]' : 'text-white/40'}`}>
-                  {isRecording ? 'System recording' : 'Standby mode'}
+                  {isRecording ? '系统录音中' : '待机模式'}
                 </p>
               </div>
             </div>
 
             {/* Signal Visualizer (Hardware Style) */}
             <div className="space-y-3">
-              <span className="text-[10px] font-mono text-[#8E9299] uppercase tracking-widest block px-2">Analog Monitor</span>
+              <span className="text-[10px] font-mono text-[#8E9299] uppercase tracking-widest block px-2">模拟信号监控</span>
               <div className="h-32 bg-black/40 rounded-xl border border-white/5 overflow-hidden flex items-end p-2 gap-0.5">
                 <canvas ref={canvasRef} width={200} height={100} className="w-full h-full opacity-60" />
               </div>
@@ -396,14 +396,14 @@ export default function App() {
             {/* Utility Dials / Metrics */}
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-black/20 p-4 rounded-xl border border-white/5">
-                <span className="text-[8px] font-mono text-[#8E9299] uppercase block mb-1">Gain / Confidence</span>
+                <span className="text-[8px] font-mono text-[#8E9299] uppercase block mb-1">置信度</span>
                 <div className="text-sm font-mono text-white">{(confidence * 100).toFixed(0)}%</div>
                 <div className="h-1 bg-white/5 rounded-full mt-2 overflow-hidden">
                   <motion.div animate={{ width: `${confidence * 100}%` }} className="h-full bg-[#8E9299]" />
                 </div>
               </div>
               <div className="bg-black/20 p-4 rounded-xl border border-white/5">
-                <span className="text-[8px] font-mono text-[#8E9299] uppercase block mb-1">Signal Acc</span>
+                <span className="text-[8px] font-mono text-[#8E9299] uppercase block mb-1">匹配度</span>
                 <div className="text-sm font-mono text-white">{(similarity * 100).toFixed(0)}%</div>
                 <div className="h-1 bg-white/5 rounded-full mt-2 overflow-hidden">
                   <motion.div animate={{ width: `${similarity * 100}%` }} className="h-full bg-[#FF4444]" />
@@ -417,14 +417,14 @@ export default function App() {
                 onClick={resetTranscript}
                 className="flex-1 py-3 bg-black/40 border border-white/10 rounded-lg text-[9px] font-mono text-[#8E9299] uppercase hover:text-white transition-all flex items-center justify-center gap-2"
               >
-                <RotateCcw className="w-3 h-3" /> Reset
+                <RotateCcw className="w-3 h-3" /> 重置
               </button>
               <button 
                 onClick={copyToClipboard}
                 className="flex-1 py-3 bg-black/40 border border-white/10 rounded-lg text-[9px] font-mono text-[#8E9299] uppercase hover:text-white transition-all flex items-center justify-center gap-2"
               >
                 {isCopied ? <Check className="w-3 h-3 text-[#FF4444]" /> : <Copy className="w-3 h-3" />}
-                {isCopied ? 'OK' : 'Export'}
+                {isCopied ? '完成' : '导出'}
               </button>
             </div>
 
@@ -432,7 +432,7 @@ export default function App() {
             <div className="mt-auto pt-8 flex items-center gap-2 opacity-20">
               <Activity className="w-4 h-4 text-[#8E9299]" />
               <div className="flex-1 h-px bg-[#8E9299]/30" />
-              <span className="text-[8px] font-mono text-[#8E9299] uppercase">Analog/STT-Engine</span>
+              <span className="text-[8px] font-mono text-[#8E9299] uppercase">模拟/语音识别引擎</span>
             </div>
           </aside>
         </div>
@@ -441,12 +441,12 @@ export default function App() {
       {/* Footer Info */}
       <footer className="max-w-6xl mx-auto mt-8 flex justify-between items-center px-4 opacity-40">
         <div className="text-[10px] font-mono flex items-center gap-6">
-          <span>LATENCY: 12ms</span>
-          <span>SR: 44.1kHz</span>
-          <span>B: 16bit</span>
+          <span>延迟: 12ms</span>
+          <span>采样率: 44.1kHz</span>
+          <span>位深: 16bit</span>
         </div>
         <div className="text-[10px] font-mono">
-          MODEL_Z-9 // VER_CONTROL_S_RUN
+          型号_Z-9 // 版本_控制_S_RUN
         </div>
       </footer>
 

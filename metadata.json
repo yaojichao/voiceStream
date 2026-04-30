@@ -1,6 +1,6 @@
 {
-  "name": "VocalStream",
-  "description": "Professional voice-to-text verification and audio analysis tool.",
+  "name": "语音流 (VocalStream)",
+  "description": "专业的语音转文本验证与音频分析工具。",
   "requestFramePermissions": [
     "microphone"
   ],
